@@ -5,4 +5,4 @@
 *.o
 *.so
 *.dylib
-hellomake
+hellomake*

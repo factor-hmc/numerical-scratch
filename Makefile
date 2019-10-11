@@ -7,7 +7,7 @@ SDIR=src
 ODIR=obj
 LDIR =lib
 
-LIBS=-lm
+LIBS=-lm -lhellomake
 
 _DEPS = hellomake.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
@@ -18,19 +18,19 @@ LSRC = $(patsubst %,$(SDIR)/%,$(_LSRC))
 _OBJ = hellomake.o hellofunc.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-
-
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
-
-hellomake: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
-	make $(LDIR)/lib$@.dylib
 
 $(LDIR)/libhellomake.dylib: $(LSRC)
 	$(CC) $(LFLAGS) -o $@ $^ $(CFLAGS)
 
+hellomake: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+hellomakesl: src/hellomake.c $(LDIR)/libhellomake.dylib
+	gcc -L$(LDIR) -o $@ $(LIBS) $< -Iinc
+
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ $(LDIR)/*.so *~ $(LDIR)/*.dylib *~ hellomake
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ $(LDIR)/*.so *~ $(LDIR)/*.dylib *~ hellomake*

@@ -27,8 +27,8 @@ $(LDIR)/libhellomake.dylib: $(LSRC)
 hellomake: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
-hellomakesl: src/hellomake.c $(LDIR)/libhellomake.dylib
-	gcc -L$(LDIR) -o $@ $(LIBS) $< -Iinc
+hellomakesl: $(SDIR)/hellomake.c $(LDIR)/libhellomake.dylib
+	gcc -L$(LDIR) -o $@ $(LIBS) $< -I$(IDIR)
 
 .PHONY: clean
 

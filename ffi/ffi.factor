@@ -1,4 +1,8 @@
-USING: alien alien.libraries ;
+USING: alien alien.c-types alien.libraries alien.syntax ;
 IN: numerical-scratch.ffi
 
-<< "hellomake" "../lib/libhellomake.so" cdecl add-library >>
+<< "libhellomake" "../lib/libhellomake.dylib" cdecl add-library >>
+
+LIBRARY: libhellomake
+
+FUNCTION: void myPrintHelloMake ( )

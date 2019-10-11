@@ -4,4 +4,5 @@
 # Skip generated files
 *.o
 *.so
+*.dylib
 hellomake

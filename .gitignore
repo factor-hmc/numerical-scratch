@@ -2,5 +2,6 @@
 .DS_Store
 
 # Skip generated files
-.o*
+*.o
+*.so
 hellomake

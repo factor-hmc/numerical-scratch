@@ -1,6 +1,6 @@
 IDIR =inc
 CC=gcc
-CFLAGS=-I$(IDIR)
+CFLAGS=-I$(IDIR) -fPIC
 
 SDIR=src
 ODIR=obj

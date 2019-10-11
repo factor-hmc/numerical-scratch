@@ -1,0 +1,6 @@
+# Weird MAC things
+.DS_Store
+
+# Skip generated files
+obj/*
+hellomake

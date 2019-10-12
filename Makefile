@@ -1,3 +1,7 @@
+# Makefile Source: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+# .dylib compilation source:
+# http://www.xappsoftware.com/wordpress/2012/12/20/how-to-create-a-shared-library-on-mac-os-x-using-gcc/
+
 IDIR =inc
 CC=gcc
 CFLAGS=-I$(IDIR)

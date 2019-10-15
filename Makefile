@@ -2,39 +2,32 @@
 # .dylib compilation source:
 # http://www.xappsoftware.com/wordpress/2012/12/20/how-to-create-a-shared-library-on-mac-os-x-using-gcc/
 
-IDIR =inc
-CC=gcc
-CFLAGS=-I$(IDIR)
-LFLAGS=-dynamiclib
 
-SDIR=src
-ODIR=obj
-LDIR =lib
+all: lib/libhellomake.dylib lib/libnumarray.dylib
 
-LIBS=-lm -lhellomake
+lib/libhellomake.dylib: src/hellofunc.c
+	gcc -dynamiclib -o lib/libhellomake.dylib src/hellofunc.c -Iinc
 
-_DEPS = hellomake.h
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+lib/libnumarray.dylib: src/numarray.c
+	gcc -dynamiclib -o lib/libnumarray.dylib src/numarray.c -Iinc
 
-_LSRC = hellofunc.c
-LSRC = $(patsubst %,$(SDIR)/%,$(_LSRC))
+exec/hellomake: src/hellomake.c src/hellofunc.c
+	gcc -c -o obj/hellomake.o src/hellomake.c -Iinc
+	gcc -c -o obj/hellofunc.o src/hellofunc.c -Iinc
+	gcc -o exec/hellomake obj/hellomake.o obj/hellofunc.o -Iinc
 
-_OBJ = hellomake.o hellofunc.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+exec/hellomakesl: src/hellomake.c lib/libhellomake.dylib inc/hellomake.h
+	gcc -Llib -o exec/hellomakesl -lhellomake src/hellomake.c -Iinc
 
-$(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+exec/numarray: src/numarray.c src/main.c
+	gcc -c -o obj/numarray.o src/numarray.c -Iinc
+	gcc -c -o obj/main.o src/main.c -Iinc
+	gcc -o exec/numarray obj/numarray.o obj/main.o -Iinc
 
-$(LDIR)/libhellomake.dylib: $(LSRC)
-	$(CC) $(LFLAGS) -o $@ $^ $(CFLAGS)
-
-hellomake: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
-
-hellomakesl: $(SDIR)/hellomake.c $(LDIR)/libhellomake.dylib
-	gcc -L$(LDIR) -o $@ $(LIBS) $< -I$(IDIR)
+exec/numarraysl: src/main.c lib/libnumarray.dylib inc/numarray.h
+	gcc -Llib -o exec/numarraysl -lnumarray src/main.c -Iinc
 
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ $(LDIR)/*.so *~ $(LDIR)/*.dylib *~ hellomake*
+	rm -f obj/*.o *~ core inc/*~ lib/*.dylib *~ exec/*

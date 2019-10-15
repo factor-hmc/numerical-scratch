@@ -5,8 +5,12 @@ IN: numerical-scratch.ffi
 
 LIBRARY: numarray
 
-FUNCTION: int* new_numarray ( size_t size )
+FUNCTION: int* numarray_alloc ( size_t size )
+
+FUNCTION: void numarray_free ( int* arr )
 
 FUNCTION: int numarray_get ( int* arr, size_t i )
 
 FUNCTION: void numarray_set ( int* arr, size_t i, int val )
+
+FUNCTION: int* numarray_arange ( size_t size )

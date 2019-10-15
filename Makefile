@@ -3,7 +3,7 @@
 # http://www.xappsoftware.com/wordpress/2012/12/20/how-to-create-a-shared-library-on-mac-os-x-using-gcc/
 
 
-all: lib/libhellomake.dylib lib/libnumarray.dylib
+all: lib/libhellomake.dylib lib/libnumarray.dylib exec/hellomake exec/hellomakesl exec/numarray exec/numarraysl
 
 lib/libhellomake.dylib: src/hellofunc.c
 	gcc -dynamiclib -o lib/libhellomake.dylib src/hellofunc.c -Iinc

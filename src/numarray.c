@@ -19,12 +19,27 @@ void numarray_set(int* arr, size_t i, int val) {
 }
 
 int* numarray_arange(size_t size) {
-    int i;
     int* arr = numarray_alloc(size);
 
+    int i;
     for (i = 0; i < size; ++i) {
         arr[i] = i;
     }
 
     return arr;
+}
+
+int* numarray_add(int* arr1, int* arr2, size_t size) {
+    int* sum = numarray_alloc(size);
+
+    int i;
+    for (i = 0; i < size; ++i) {
+        sum[i] = arr1[i] + arr2[i];
+    }
+
+    return sum;
+}
+
+void do_nothing() {
+    // pass
 }

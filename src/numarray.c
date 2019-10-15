@@ -6,10 +6,10 @@ int* new_numarray(size_t size) {
     return (int*) malloc(size);
 }
 
-int get(int* arr, size_t i) {
+int numarray_get(int* arr, size_t i) {
     return arr[i];
 }
 
-void set(int* arr, size_t i, int val) {
+void numarray_set(int* arr, size_t i, int val) {
     arr[i] = val;
 }

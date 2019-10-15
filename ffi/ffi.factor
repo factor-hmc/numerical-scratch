@@ -1,12 +1,12 @@
-USING: alien alien.c-types alien.libraries alien.syntax environment kernel ;
+USING: alien alien.c-types alien.libraries alien.syntax ;
 IN: numerical-scratch.ffi
 
-<<
-! "/Users/nandeekanayak/Documents/College/Senior Year/Fall 2019/CS 183/numerical-scratch/lib"
-! [ "LD_LIBRARY_PATH" set-os-env ] [ "DYLD_LIBRARY_PATH" set-os-env ] bi
-"hellomake" "libhellomake.dylib"  cdecl add-library
->>
+<< "numarray" "libnumarray.dylib"  cdecl add-library >>
 
-LIBRARY: hellomake
+LIBRARY: numarray
 
-FUNCTION: void myPrintHelloMake ( )
+FUNCTION: int* new_numarray ( size_t size )
+
+FUNCTION: int numarray_get ( int* arr, size_t i )
+
+FUNCTION: void numarray_set ( int* arr, size_t i, int val )

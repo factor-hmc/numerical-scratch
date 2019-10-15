@@ -7,6 +7,6 @@
 
 int* new_numarray(size_t size);
 
-int get(int* arr, size_t i);
+int numarray_get(int* arr, size_t i);
 
-void set(int* arr, size_t i, int val);
+void numarray_set(int* arr, size_t i, int val);

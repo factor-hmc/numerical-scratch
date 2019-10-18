@@ -4,7 +4,7 @@
 
 // allocates memory for a numarray
 int* numarray_alloc(size_t size) {
-    return (int*) malloc(size);
+    return (int*) malloc(size * sizeof(int));
 }
 
 // frees memory for a numarray
@@ -80,6 +80,17 @@ int* numarray_scalarmult(int* arr, int n, size_t size) {
     }
 
     return mult;
+}
+
+// Finds the dot product of two numarrays of the same size
+int numarray_dot(int* arr1, int* arr2, size_t size) {
+    int i;
+    int sum = 0;
+    for (i = 0; i < size; ++i) {
+        sum += arr1[i] * arr2[i];
+    }
+
+    return sum;
 }
 
 void do_nothing() {

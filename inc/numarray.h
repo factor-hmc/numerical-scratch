@@ -21,6 +21,8 @@ int* numarray_add(int* arr1, int* arr2, size_t size);
 
 int* numarray_subtract(int* arr1, int* arr2, size_t size);
 
+int numarray_dot(int* arr1, int* arr2, size_t size);
+
 int* numarray_scalarmult(int* arr, int n, size_t size);
 
 void do_nothing();

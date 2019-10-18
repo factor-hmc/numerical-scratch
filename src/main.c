@@ -22,23 +22,28 @@ int main() {
     // Free this array
     numarray_free(arr);
 
-    // Create two arrays [0, 1, 2] and [1, 1, 1] and add them
+    // Create two arrays [0, 1, 2] and [2, 2, 2] and add them
     size_t size = 3;
     int* arr1 = numarray_arange(size);
     int* arr2 = numarray_alloc(size);
 
     int i;
     for (i = 0; i < size; ++i) {
-        arr2[i] = 1;
+        arr2[i] = 2;
     }
 
     // Add the arrays and print the result
     arr = numarray_add(arr1, arr2, size);
     printf("[%d, %d, %d]\n", arr[0], arr[1], arr[2]);
 
+    numarray_free(arr);
+
+    // Now try taking the dot product
+    int sum = numarray_dot(arr1, arr2, size);
+    printf("dot([0, 1, 2], [2, 2, 2]) = %d\n", sum);
+
     numarray_free(arr1);
     numarray_free(arr2);
-    numarray_free(arr);
 
     return 0;
 }

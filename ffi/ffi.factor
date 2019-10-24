@@ -1,7 +1,7 @@
 USING: alien alien.c-types alien.libraries alien.syntax ;
 IN: numerical-scratch.ffi
 
-<< "numarray" "libnumarray.dylib"  cdecl add-library >>
+<< "numarray" "/Users/nandeekanayak/Documents/College/Senior Year/Fall 2019/CS 183/numerical-scratch/lib/libnumarray.dylib"  cdecl add-library >>
 
 LIBRARY: numarray
 

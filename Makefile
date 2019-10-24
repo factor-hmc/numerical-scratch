@@ -9,7 +9,7 @@ lib/libhellomake.dylib: src/hellofunc.c
 	gcc -dynamiclib -o lib/libhellomake.dylib src/hellofunc.c -Iinc
 
 lib/libnumarray.dylib: src/numarray.c
-	gcc -dynamiclib -o lib/libnumarray.dylib src/numarray.c -Iinc
+	gcc -dynamiclib -O3 -o lib/libnumarray.dylib src/numarray.c -Iinc
 
 exec/hellomake: src/hellomake.c src/hellofunc.c
 	gcc -c -o obj/hellomake.o src/hellomake.c -Iinc
@@ -30,4 +30,4 @@ exec/numarraysl: src/main.c lib/libnumarray.dylib inc/numarray.h
 .PHONY: clean
 
 clean:
-	rm -f obj/*.o *~ core inc/*~ lib/*.dylib *~ exec/*
+	rm -rf obj/*.o *~ inc/*~ lib/*.dylib *~ exec/*

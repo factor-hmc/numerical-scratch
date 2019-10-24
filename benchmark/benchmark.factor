@@ -1,4 +1,4 @@
-USING: kernel locals math math.vectors numerical-scratch.ffi tools.time ;
+USING: kernel locals math math.ranges numerical-scratch.ffi tools.time ;
 IN: numerical-scratch.benchmark
 
 <PRIVATE
@@ -37,11 +37,13 @@ n 4 numarray_init ;
 PRIVATE>
 
 ! Given an numarray size, and number of trials, benchmark adding and dot product
-:: benchmark_numarray ( n #t -- add dot )
+:: benchmark_numarray ( n #t -- l1 add l2 dot )
 ! Create the arrays
 n create_numarrays :> a2 :> a1
 ! Benchmark
+"Adding numarrays"
 a1 a2 n #t benchmark_numarray_add
+"Dot producting numarrays"
 a1 a2 n #t benchmark_numarray_dot
 ! Free the arrays
 a1 numarray_free a2 numarray_free ;

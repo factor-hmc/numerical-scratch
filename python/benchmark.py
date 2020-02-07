@@ -23,7 +23,7 @@ def main():
     n = 100000
     print(timeit(lambda: np.matmul(a, b), number=n) / n * 10**9)
 
-    print("Multiply two 100000 element numpy arrays")
+    print("Multiply two 100x100 element numpy arrays")
     a = np.arange(10000).reshape(100, 100)
     b = np.arange(10000).reshape(100, 100)
     n = 1000

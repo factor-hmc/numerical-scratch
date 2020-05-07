@@ -62,6 +62,15 @@ def new_style():
 
     print(data)
 
+    a = np.arange(1000000).reshape(1000, 1000).astype('float32')
+    b = np.arange(1000000).reshape(1000, 1000).astype('float32')
+    c = np.matmul(a, b)
+    data = np.zeros(trials).astype(int)
+    for i in range(trials):
+        data[i] = round(timeit(lambda: np.matmul(a, b), number=1) * 10 ** 9)
+
+    print(data)
+
     a = np.arange(10000).reshape(100, 100).astype('float32')
     c = np.transpose(a)
     data = np.zeros(trials).astype(int)
